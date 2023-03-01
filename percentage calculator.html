@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Splitting Service Fees Calculator</title>
+	
+</head>
+<body>
+	<h1>Splitting Service Fees Calculator</h1>
+	<form>
+		<label for="percentage">Percentage for Service Provider's Fee:</label>
+		<input type="number" id="percentage" name="percentage" min="0" max="100" step="0.01" value="10">%<br>
+		<label for="fee">Fee for Yourself:</label>
+		<input type="number" id="fee" name="fee" min="0" step="0.10" value="30"><br>
+		<input type="button" onclick="calculateTotalPrice()" value="Calculate Total Price"><br><br>
+		<label for="providerFee">Service Provider's Fee:</label>
+		<input type="text" id="providerFee" name="providerFee" readonly><br>
+		<label for="userFee">Your Fee:</label>
+		<input type="text" id="userFee" name="userFee" readonly><br>
+		<label for="totalPrice">Total Price:</label>
+		<input type="text" id="totalPrice" name="totalPrice" readonly><br>
+	</form>
+
+	<script>
+		function calculateTotalPrice() {
+			// Get the input values from the form
+			const percentage = document.getElementById("percentage").value / 100;
+			const fee = document.getElementById("fee").value;
+
+			// Calculate the total price of the service
+			const totalPrice = fee / (1 - percentage);
+
+			// Calculate the fees for the service provider and for yourself
+			const providerFee = totalPrice * percentage;
+			const userFeeAfterRounding = Math.round((totalPrice - providerFee) * 100) / 100; //rounded to 2 decimals
+
+			// Output the results to the form
+			document.getElementById("totalPrice").value = "£" + totalPrice.toFixed(2);
+			document.getElementById("providerFee").value = "£" + providerFee.toFixed(2);
+			document.getElementById("userFee").value = "£" + userFeeAfterRounding.toFixed(2);
+		}
+	</script>
+</body>
+</html>
