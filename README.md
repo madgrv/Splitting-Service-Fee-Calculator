@@ -4,7 +4,7 @@ A web app to calculate the exact provider fee based on the percentage due to the
 
 ## Usage
 
-1. Open the `index.html` file in a web browser.
+1. go to https://madgrv.github.io/split-percentage-calculator/ alternatively you can download and open the `index.html` file in a web browser.
 2. Enter the percentage for the service provider's fee and the fee for yourself.
 3. Click the "Calculate Total Price" button to see the results.
 
